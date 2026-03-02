@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Birthday Surprise - Shahnaz Parvin</title>
+    <title>Birthday Surprise - Sahanaz Parvin</title>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300&display=swap" rel="stylesheet">
     <style>
         :root { --pink: #ffb7c5; --deep-pink: #d02090; }

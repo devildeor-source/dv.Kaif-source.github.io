@@ -58,8 +58,8 @@
     <div class="book">
         <div class="page" style="z-index: 1;">
             <div class="photo-frame">
-              Screenshot_2026-03-02-10-33-03-52_40deb401b9ffe8e1df2f1cc5ba480b12.jpg
-              alt="Shahnaz Parvin">
+         <img src="1000088576.jpg" alt="Shahnaz Parvin">
+         
             </div>
             <h1>Happy Birthday!</h1>
             <p>To the world's best elder sister. ❤️</p>

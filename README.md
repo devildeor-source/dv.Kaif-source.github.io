@@ -46,7 +46,7 @@
     <div id="lock-screen">
         <div class="pw-box">
             <h3>Enter Password</h3>
-            <p>Hint: Her name (shahnaz)</p>
+            <p>Hint: Her name (sahanaz)</p>
             <input type="password" id="pw" placeholder="password...">
             <br>
             <button onclick="checkPw()">Enter Surprise</button>
@@ -63,12 +63,12 @@
          
             </div>
             <h1>Happy Birthday!</h1>
-            <p>To the world's best elder sister. ❤️</p>
+            <p>To my sister. ❤️</p>
         </div>
 
         <div class="page" id="p3" style="z-index: 2;" onclick="flip('p3')">
             <h1>Always With You</h1>
-            <p>Thank you for your love and support. I am so lucky to have you! 🌸</p>
+            <p>Thank you for your love and support.  🌸</p>
         </div>
 
         <div class="page" id="p2" style="z-index: 3;" onclick="flip('p2')">

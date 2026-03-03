@@ -109,13 +109,16 @@
 
     <script>
         function checkPw() {
-            const pw = document.getElementById('pw').value;
-            if(pw.toLowerCase() === 'shahnaz') {
-                document.getElementById('lock-screen').classList.add('hidden');
-            } else {
-                alert("Wrong password!");
-            }
-        }
+    const pw = document.getElementById('pw').value;
+    if(pw.toLowerCase() === 'shahnaz') {
+        document.getElementById('lock-screen').classList.add('hidden');
+        // Start petals ONLY after login to prevent wobbling
+        setInterval(createPetal, 150); 
+    } else {
+        alert("Wrong password!");
+    }
+}
+
 
         function flip(id) {
             document.getElementById(id).classList.add('flipped');

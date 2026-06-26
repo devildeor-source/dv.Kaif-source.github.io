@@ -7,13 +7,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300&display=swap" rel="stylesheet">  
     <style>  
         :root { --pink: #ffb7c5; --deep-pink: #d02090; }  
-        * { margin: 0; padding: 0; box-sizing: border-box; }        
-        /* Locks the password box so it cannot wobble */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         #lock-screen {
             position: fixed;
             inset: 0;
             background: #ffb7c5;
-            z-index: 9999; /* Higher than everything else */
+            z-index: 9999; 
             display: flex;
             justify-content: center;
             align-items: center;
@@ -26,26 +25,22 @@
             border-radius: 20px;
             text-align: center;
             box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-            width: 85%; /* Responsive for Android */
+            width: 85%; 
             max-width: 320px;
         }
-        /* Animated Sakura Forest Background */  
         .forest-bg { position: fixed; inset: 0; background: url('https://images.unsplash.com/photo-1522383225653-ed111181a951?q=80&w=2070&auto=format&fit=crop') no-repeat center center; background-size: cover; z-index: -2; filter: brightness(0.7); }  
         #lock-screen.hidden { opacity: 0; pointer-events: none; }  
         input { padding: 12px; border: 2px solid var(--pink); border-radius: 8px; margin: 15px 0; outline: none; text-align: center; width: 200px; }  
         button { padding: 10px 25px; background: var(--deep-pink); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; }  
-        /* 3D Flip Book */  
         .book { width: 320px; height: 450px; position: relative; perspective: 1500px; z-index: 5; margin: 50px auto 0 auto; }  
-        .page { position: absolute; width: 100%; height: 100%; top: 0; left: 0; background: rgba(255, 240, 245, 0.95); border-radius: 0 15px 15px 0; transform-origin: left; transform-style: preserve-3d; transition: transform 1.2s cubic-bezier(0.645, 0.045, 0.355, 1); box-shadow: inset 3px 0 10px rgba(0,0,0,0.1), 5px 5px 20px rgba(0,0,0,0.3); display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 25px; text-align: center; backface-visibility: hidden; cursor: pointer; border-left: 1px solid rgba(0,0,0,0.1); }      
+        .page { position: absolute; width: 100%; height: 100%; top: 0; left: 0; background: rgba(255, 240, 245, 0.95); border-radius: 0 15px 15px 0; transform-origin: left; transform-style: preserve-3d; transition: transform 1.2s cubic-bezier(0.645, 0.045, 0.355, 1); box-shadow: inset 3px 0 10px rgba(0,0,0,0.1), 5px 5px 20px rgba(0,0,0,0.3); display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 25px; text-align: center; backface-visibility: hidden; cursor: pointer; border-left: 1px solid rgba(0,0,0,0.1); }   
         .flipped { transform: rotateY(-180deg); }  
         .cover { background: var(--deep-pink); color: white; z-index: 10; border-left: none; }  
         .cover h1 { color: white; font-size: 2.2rem; font-family: 'Dancing Script', cursive; }  
-        /* Brother's Photo Frame */  
         .photo-frame { width: 220px; height: 220px; border: 8px solid white; border-radius: 5px; overflow: hidden; margin-bottom: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); background: #eee; }  
         .photo-frame img { width: 100%; height: 100%; object-fit: cover; }  
         h1 { font-family: 'Dancing Script', cursive; font-size: 1.8rem; color: var(--deep-pink); }  
         p { font-size: 0.9rem; line-height: 1.6; color: #444; margin-top: 10px; font-weight: 500; }  
-        /* Floating Petals */  
         .petal { position: absolute; background-color: var(--pink); border-radius: 150% 0 150% 0; opacity: 0.8; pointer-events: none; z-index: 20; animation: fall linear infinite; }  
         @keyframes fall { 0% { transform: translateY(-10vh) rotate(0deg); } 100% { transform: translateY(110vh) rotate(360deg) translateX(50px); } }  
     </style>
@@ -55,8 +50,8 @@
 <div id="lock-screen">  
     <div class="pw-box">  
         <h3>Enter Password</h3>  
-        <p>Hint: Key will be provided by admin on 5th March</p>  
-        <input type="password" id="pw" placeholder="password...">  
+        <p>Hint: Key will be provided by admin on 5th March</p>
+        <input type="text" id="pw" placeholder="password..." autocapitalize="off" autocorrect="off" autocomplete="off">  
         <br>  
         <button onclick="checkPw()">Enter Surprise</button>  
     </div>  
@@ -88,11 +83,12 @@
 
 <script>  
     function checkPw() {  
-        // .trim() removes any accidental spaces typed before or after the password
-        const pw = document.getElementById('pw').value.trim();  
-        if(pw.toLowerCase() === 'betada') {  
+        const inputField = document.getElementById('pw');
+        // Clean the text entirely of whitespaces and force lowercase
+        const cleanPw = inputField.value.replace(/\s+/g, '').toLowerCase();  
+        
+        if(cleanPw === 'betada') {  
             document.getElementById('lock-screen').classList.add('hidden');  
-            // Start petals ONLY after successful login
             setInterval(createPetal, 150);   
         } else {  
             alert("Wrong password!");  
@@ -118,69 +114,7 @@
 
 </body>  
 </html>
-}
-
-.pw-box {
-position: relative;
-padding: 40px;
-background: white;
-border-radius: 20px;
-text-align: center;
-box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-width: 85%; /* Responsive for Android */
-max-width: 320px;
-}
-
-/* Animated Sakura Forest Background */  
-    .forest-bg { position: fixed; inset: 0; background: url('https://images.unsplash.com/photo-1522383225653-ed111181a951?q=80&w=2070&auto=format&fit=crop') no-repeat center center; background-size: cover; z-index: -2; filter: brightness(0.7); }  
-    /* Password Entrance */  
-    #lock-screen { position: fixed; inset: 0; background: rgba(255, 183, 197, 0.98); z-index: 100; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 1s; }  
-    #lock-screen.hidden { opacity: 0; pointer-events: none; }  
-    .pw-box { padding: 30px; background: white; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); text-align: center; }  
-    input { padding: 12px; border: 2px solid var(--pink); border-radius: 8px; margin: 15px 0; outline: none; text-align: center; width: 200px; }  
-    button { padding: 10px 25px; background: var(--deep-pink); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; }  
-    /* 3D Flip Book */  
-    .book { width: 320px; height: 450px; position: relative; perspective: 1500px; z-index: 5; }  
-    .page { position: absolute; width: 100%; height: 100%; top: 0; left: 0; background: rgba(255, 240, 245, 0.95); border-radius: 0 15px 15px 0; transform-origin: left; transform-style: preserve-3d; transition: transform 1.2s cubic-bezier(0.645, 0.045, 0.355, 1); box-shadow: inset 3px 0 10px rgba(0,0,0,0.1), 5px 5px 20px rgba(0,0,0,0.3); display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 25px; text-align: center; backface-visibility: hidden; cursor: pointer; border-left: 1px solid rgba(0,0,0,0.1); }        
-    .flipped { transform: rotateY(-180deg); }  
-    .cover { background: var(--deep-pink); color: white; z-index: 10; border-left: none; }  
-    .cover h1 { color: white; font-size: 2.2rem; font-family: 'Dancing Script', cursive; }  
-    /* Brother's Photo Frame */  
-    .photo-frame { width: 220px; height: 220px; border: 8px solid white; border-radius: 5px; overflow: hidden; margin-bottom: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); background: #eee; }  
-    .photo-frame img { width: 100%; height: 100%; object-fit: cover; }  
-    h1 { font-family: 'Dancing Script', cursive; font-size: 1.8rem; color: var(--deep-pink); }  
-    p { font-size: 0.9rem; line-height: 1.6; color: #444; margin-top: 10px; font-weight: 500; }  
-    /* Floating Petals - Highest Z-Index to stay in front */  
-    .petal { position: absolute; background-color: var(--pink); border-radius: 150% 0 150% 0; opacity: 0.8; pointer-events: none; z-index: 20; animation: fall linear infinite; }  
-    @keyframes fall { 0% { transform: translateY(-10vh) rotate(0deg); } 100% { transform: translateY(110vh) rotate(360deg) translateX(50px); } }  
-</style>
-
-</head>  
-<body>  <div id="lock-screen">  
-    <div class="pw-box">  
-        <h3>Enter Password</h3>  
-        <p>Hint: Key will be provided by admin on 5th March</p>  
-        <input type="password" id="pw" placeholder="password...">  
-        <br>  
-        <button onclick="checkPw()">Enter Surprise</button>  
-    </div>  
-</div>  
-
-<div class="forest-bg"></div>  
-
-<div class="book">  
-    <div class="page" style="z-index: 1;">  
-        <div class="photo-frame">  
-     <img src="Screenshot_2026-03-02-10-33-03-52_40deb401b9ffe8e1df2f1cc5ba480b12.jpg" alt="Adrish">        
-        </div>  
-        <h1>Happy Birthday!</h1>  
-        <p>To my brother. ❤️</p>  
-    </div>  
-    <div class="page" id="p3" style="z-index: 2;" onclick="flip('p3')">  
-        <h1>Always With You</h1>  
-        <p>Thank you for your love and support.  🌸</p>  
-    </div>  
-    <div class="page" id="p2" style="z-index: 3;" onclick="flip('p2')">  
+lass="page" id="p2" style="z-index: 3;" onclick="flip('p2')">  
         <h1>A Special Wish</h1>  
         <p>May your day be filled with as much joy as you give to others. 🌷</p>  
     </div>  
